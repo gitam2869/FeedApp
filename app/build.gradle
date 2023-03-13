@@ -1,0 +1,81 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.fan.feedapp"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+}
+
+dependencies {
+    implementation project(':videoplayer')
+
+    //Testing
+    testImplementation (Deps.junit)
+    androidTestImplementation (Deps.androidx_junit)
+    androidTestImplementation (Deps.espresso_core)
+
+    //AndroidX
+    implementation (Deps.core_ktx)
+    implementation (Deps.appcompat)
+
+    //Design
+    implementation (Deps.material)
+    implementation (Deps.constraint_layout)
+
+    //Navigation Component - Kotlin
+    implementation (Deps.navigation_fragment_ktx)
+    implementation (Deps.navigation_ui_ktx)
+
+    //Retrofit
+    implementation (Deps.retrofit)
+    implementation (Deps.gson_converter)
+    implementation (Deps.logging_interceptor)
+
+    //Coroutines
+    implementation (Deps.coroutines)
+
+    //Dagger-Hilt
+    implementation (Deps.dagger_hilt)
+    kapt (Deps.dagger_hilt_kapt)
+
+    //Glide
+    implementation (Deps.glide)
+
+    //Room
+    implementation (Deps.room_runtime)
+    kapt (Deps.room_compiler)
+    implementation (Deps.room_ktx)
+
+}
