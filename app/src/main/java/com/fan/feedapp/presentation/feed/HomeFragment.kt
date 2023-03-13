@@ -112,7 +112,7 @@ class HomeFragment : Fragment() {
                 if (!isLoading) {
                     val layout: LinearLayoutManager =
                         recyclerView.layoutManager as LinearLayoutManager
-                    if (layout.findLastVisibleItemPosition() >= loadPosition) {
+                    if (layout.findLastVisibleItemPosition() >= loadPosition || layout.findLastVisibleItemPosition() == feedList.size - 1) {
                         addText(2)
                         isLoading = true
                         loadPosition += 7
